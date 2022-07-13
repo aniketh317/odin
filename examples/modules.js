@@ -16,7 +16,7 @@ function parent(par){
     return api;
 }
 
-obj = parent(1);
+var obj = parent(1);
 obj.print();//prints 1
 obj.sett(10);
 obj.print();//prints 10
@@ -27,12 +27,14 @@ console.log('\n');
 
 function child(par,chi){
     var parapi = parent(par);
+    var dum = chi;
     var api = {
         print(){
             parapi.print();
-            console.log(chi+'\n');
+            console.log(chi,dum);
         },
         sett(valp,valc){
+            par = valp;
             parapi.sett(valp);
             chi = valc;
         },
@@ -45,8 +47,9 @@ function child(par,chi){
 }
 
 obj = child(1,'a');
-obj.print();//prints 1 and a
+obj.print();//prints 1 and a,a
 obj.sett(10,'b');
-obj.print();//prints 10 and b
+obj.print();//prints 10 and b,a
 obj.add(5,'c');
-obj.print();//prints 15 and bc
+obj.print();//prints 15 and bc,a
+
